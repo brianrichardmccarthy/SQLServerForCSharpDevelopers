@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="SQLServerForCSharpDevelopers.Repository.EntityFrameworkCodeFirst\" />
+    <Folder Include="SQLServerForCSharpDevelopers.Repository.EntityFramework\" />
+    <Folder Include="SQLServerForCSharpDevelopers.Repository.Interface\" />
+    <Folder Include="SQLServerForCSharpDevelopers.Repository.Raven\" />
+    <Folder Include="SQLServerForCSharpDevelopers.Repository.SQL\" />
+  </ItemGroup>
+
+</Project>
