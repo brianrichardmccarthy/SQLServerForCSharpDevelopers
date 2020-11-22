@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLServerForCSharpDevelopers.Controllers", "SQLServerForCSharpDevelopers.Controllers\SQLServerForCSharpDevelopers.Controllers.csproj", "{DAB45E01-4F7D-4B0A-86D8-CF8B1E8432C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLServerForCSharpDevelopers.Controllers", "SQLServerForCSharpDevelopers.Controllers\SQLServerForCSharpDevelopers.Controllers.csproj", "{DAB45E01-4F7D-4B0A-86D8-CF8B1E8432C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLServerForCSharpDevelopers.Models", "SQLServerForCSharpDevelopers.Models\SQLServerForCSharpDevelopers.Models.csproj", "{37950EA3-3ED0-43D3-B30B-A21CF926184A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLServerForCSharpDevelopers.Models", "SQLServerForCSharpDevelopers.Models\SQLServerForCSharpDevelopers.Models.csproj", "{37950EA3-3ED0-43D3-B30B-A21CF926184A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLServerForCSharpDevelopers.Contracts", "SQLServerForCSharpDevelopers.Contracts\SQLServerForCSharpDevelopers.Contracts.csproj", "{A2DCD831-8B47-4930-9ACC-4D3A6B7DACD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLServerForCSharpDevelopers.Contracts", "SQLServerForCSharpDevelopers.Contracts\SQLServerForCSharpDevelopers.Contracts.csproj", "{A2DCD831-8B47-4930-9ACC-4D3A6B7DACD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLServerForCSharpDevelopers.Repository", "SQLServerForCSharpDevelopers.Repository\SQLServerForCSharpDevelopers.Repository.csproj", "{107AD6E7-1A40-4D52-ADD0-A9D5F5536166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLServerForCSharpDevelopers.Repository", "SQLServerForCSharpDevelopers.Repository\SQLServerForCSharpDevelopers.Repository.csproj", "{107AD6E7-1A40-4D52-ADD0-A9D5F5536166}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLServerForCSharpDevelopers.Tests", "SQLServerForCSharpDevelopers.Tests\SQLServerForCSharpDevelopers.Tests.csproj", "{8C375CDA-EAAA-43F2-A2F2-463A53354094}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLServerForCSharpDevelopers.Tests", "SQLServerForCSharpDevelopers.Tests\SQLServerForCSharpDevelopers.Tests.csproj", "{8C375CDA-EAAA-43F2-A2F2-463A53354094}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLServerForCSharpDevelopers.Service", "SQLServerForCSharpDevelopers.Service\SQLServerForCSharpDevelopers.Service.csproj", "{ED7767EA-1A9E-4203-8E68-ABD92DAF4953}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{8C375CDA-EAAA-43F2-A2F2-463A53354094}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C375CDA-EAAA-43F2-A2F2-463A53354094}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C375CDA-EAAA-43F2-A2F2-463A53354094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED7767EA-1A9E-4203-8E68-ABD92DAF4953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED7767EA-1A9E-4203-8E68-ABD92DAF4953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED7767EA-1A9E-4203-8E68-ABD92DAF4953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED7767EA-1A9E-4203-8E68-ABD92DAF4953}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

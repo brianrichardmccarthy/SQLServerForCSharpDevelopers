@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="SQLServerForCSharpDevelopers.Tests.Service\" />
     <Folder Include="SQLServerForCSharpDevelopers.Tests.Controllers\" />
     <Folder Include="SQLServerForCSharpDevelopers.Tests.Repository\" />
   </ItemGroup>
