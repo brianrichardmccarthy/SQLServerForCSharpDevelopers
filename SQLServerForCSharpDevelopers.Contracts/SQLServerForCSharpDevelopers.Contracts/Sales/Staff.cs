@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SQLServerForCSharpDevelopers.Contracts.SQLServerForCSharpDevelopers.Contracts.Sales {
     public class Staff {
-        public Guid StaffId { get; set; }
+        public Guid? StaffId { get; set; }
         public Store Store { get; set; }
         public Address Address { get; set; }
         public Contact Contact { get; set; }
