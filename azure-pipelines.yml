@@ -5,6 +5,17 @@
 
 trigger:
 - dev
+- release/*
+- feat/*
+- feature/*
+- hotfix/*
+
+pr:
+- dev
+- release/*
+- feat/*
+- feature/*
+- hotfix/*
 
 pool:
   vmImage: 'windows-latest'
