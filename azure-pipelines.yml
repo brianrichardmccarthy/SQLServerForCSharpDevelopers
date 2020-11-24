@@ -16,16 +16,10 @@ variables:
 
 steps:
 - task: NuGetToolInstaller@1
-- checkout: self
-  clean: true
-  continueOnError: false
 
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-- checkout: self
-  clean: true
-  continueOnError: false
 
 - task: VSBuild@1
   inputs:
@@ -33,36 +27,8 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-- checkout: self
-  clean: true
-  continueOnError: false
 
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-- checkout: self
-  clean: true
-  continueOnError: false
-
-- task: DotNetCoreCLI@2
-  displayName: Build
-  inputs:
-    command: build
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)' 
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: test
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
-
-pr:
- drafts: false
- branches:
-  include:
-    - release/*
-    - feat/*
-    - feature/*
-    - dev/*
