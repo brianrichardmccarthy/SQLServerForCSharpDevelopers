@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SQLServerForCSharpDevelopers.Contracts.SQLServerForCSharpDevelopers.Contracts.Sales {
+﻿namespace SQLServerForCSharpDevelopers.Contracts.Sales {
     public class OrderDetails {
         public Order Order { get; set; }
         public Products.Product Product { get; set; }
