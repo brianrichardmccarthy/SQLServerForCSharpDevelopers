@@ -6,32 +6,39 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Models;
+
+using NSwag;
 
 namespace SQLServerForCSharpDevelopers.Controllers {
     public class Startup {
-        public IConfigurationRoot Configuration { get; set; }
+        public IConfiguration Configuration { get; set; }
 
-        public Startup(IHostEnvironment env) {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", true, true);
-            Configuration = builder.Build();
+        public Startup(IConfiguration configuration) {
+            Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services) {
             services.AddControllers();
-            services.AddOptions();
-            services.AddSwaggerGen(x => { x.SwaggerDoc("v1", new OpenApiInfo {
-                   Title = "Bike Store API",
-                   Version = "V1"
-                });
+            services.AddApiVersioning(o => {
+                o.ReportApiVersions = true;
+                o.AssumeDefaultVersionWhenUnspecified = true;
+                o.DefaultApiVersion = new ApiVersion(1, 0);
             });
-            
+            services.AddVersionedApiExplorer(options => options.SubstituteApiVersionInUrl = true);
+            services.AddMvc();
+            services.AddOpenApiDocument(
+                config => {
+                    config.PostProcess = doc => {
+                        doc.Info.Version = "V1";
+                        doc.Info.Title = "Bike Store";
+                        doc.Info.Description = "Bike Store";
+                        doc.Info.TermsOfService = "None";
+                    };
+                });
             services.Configure<SwaggerOptions>(Configuration.GetSection(nameof(SwaggerOptions)));
         }
 
@@ -40,17 +47,15 @@ namespace SQLServerForCSharpDevelopers.Controllers {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
             app.UseRouting();
-            
-            var swaggerOptions = new SwaggerOptions();
-            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
-
-            app.UseSwagger(options => { options.RouteTemplate = swaggerOptions.JsonRoute; });
-            app.UseSwaggerUI(options => options.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description));
-
+            app.UseHttpsRedirection();
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
+            });
+            app.Run(async context => {
+                context.Response.Redirect("swagger/index.html");
             });
         }
     }
