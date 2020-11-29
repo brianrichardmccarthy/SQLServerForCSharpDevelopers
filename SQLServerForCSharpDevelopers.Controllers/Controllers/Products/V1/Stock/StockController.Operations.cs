@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace SQLServerForCSharpDevelopers.Controllers.Controllers.Products.V1.Stock {
     public partial class StockController {
         [HttpPost("Create")]
-        public IActionResult Create([FromBody] Contracts.Products.Stock stock) {
+        public IActionResult CreateStock([FromBody] Contracts.Products.Stock stock) {
             return Ok();
         }
 
@@ -13,8 +13,8 @@ namespace SQLServerForCSharpDevelopers.Controllers.Controllers.Products.V1.Stock
             return Ok();
         }
 
-        [HttpPatch("Sale")]
-        public IActionResult Sale() {
+        [HttpPatch("Delete")]
+        public IActionResult DeleteStock() {
             return Ok();
         }
     }
