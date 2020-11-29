@@ -3,17 +3,17 @@
 namespace SQLServerForCSharpDevelopers.Controllers.Controllers.Products.V1.Product {
     public partial class ProductController {
         [HttpPost("Create")]
-        public IActionResult CreateProducts() {
+        public IActionResult CreateProduct([FromBody] Contracts.Products.Product product) {
             return Ok();
         }
 
         [HttpPatch("Update")]
-        public IActionResult UpdateProducts() {
+        public IActionResult UpdateProduct([FromBody] Contracts.Products.Product product) {
             return Ok();
         }
 
         [HttpDelete("Delete")]
-        public IActionResult DeleteProducts() {
+        public IActionResult DeleteProduct([FromBody] Contracts.Products.Product product) {
             return Ok();
         }
     }

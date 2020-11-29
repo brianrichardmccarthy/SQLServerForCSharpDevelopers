@@ -3,7 +3,7 @@
 namespace SQLServerForCSharpDevelopers.Controllers.Controllers.Products.V1.Product {
     public partial class ProductController {
         [HttpGet("Read")]
-        public IActionResult ReadProducts() {
+        public IActionResult ReadProduct() {
             return Ok();
         }
     }

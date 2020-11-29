@@ -13,8 +13,8 @@ namespace SQLServerForCSharpDevelopers.Controllers.Controllers.Products.V1.Stock
             return Ok();
         }
 
-        [HttpPatch("Delete")]
-        public IActionResult DeleteStock() {
+        [HttpDelete("Delete")]
+        public IActionResult DeleteStock([FromBody] Contracts.Products.Stock stock) {
             return Ok();
         }
     }
