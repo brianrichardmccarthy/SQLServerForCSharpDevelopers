@@ -13,8 +13,8 @@ namespace SQLServerForCSharpDevelopers.Controllers.Controllers.Products.V1.Brand
             return Ok();
         }
 
-        [HttpDelete("delete/{id}")]
-        public IActionResult DeleteBrand(Guid id) {
+        [HttpDelete("delete")]
+        public IActionResult DeleteBrand([FromBody] Contracts.Products.Brand brand) {
             return Ok();
         }
     }
