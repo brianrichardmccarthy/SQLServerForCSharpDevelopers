@@ -6,36 +6,56 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using NSwag;
+
 namespace SQLServerForCSharpDevelopers.Controllers {
     public class Startup {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public void ConfigureServices(IServiceCollection services) {
-            services.AddSwaggerGen();
+        public IConfiguration Configuration { get; set; }
+
+        public Startup(IConfiguration configuration) {
+            Configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void ConfigureServices(IServiceCollection services) {
+            services.AddControllers();
+            services.AddApiVersioning(o => {
+                o.ReportApiVersions = true;
+                o.AssumeDefaultVersionWhenUnspecified = true;
+                o.DefaultApiVersion = new ApiVersion(1, 0);
+            });
+            services.AddVersionedApiExplorer(options => options.SubstituteApiVersionInUrl = true);
+            services.AddMvc();
+            services.AddOpenApiDocument(
+                config => {
+                    config.PostProcess = doc => {
+                        doc.Info.Version = "V1";
+                        doc.Info.Title = "Bike Store";
+                        doc.Info.Description = "Bike Store";
+                        doc.Info.TermsOfService = "None";
+                    };
+                });
+            services.Configure<SwaggerOptions>(Configuration.GetSection(nameof(SwaggerOptions)));
+        }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "BikeStores");
-            });
-
             app.UseRouting();
-
+            app.UseHttpsRedirection();
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
             app.UseEndpoints(endpoints => {
-                endpoints.MapGet("/", async context => {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
+            });
+            app.Run(async context => {
+                context.Response.Redirect("swagger/index.html");
             });
         }
     }
