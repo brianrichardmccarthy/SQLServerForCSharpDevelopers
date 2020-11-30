@@ -296,9 +296,9 @@ CREATE TABLE [Sales].[Order]
     [StaffId]     [uniqueidentifier] NOT NULL,
     [CustomerId]  [uniqueidentifier] NOT NULL,
     [Status]      [int]              NOT NULL,
-    [OrderDate]   [datetime2]        NOT NULL,
-    [ShippedDate] [datetime2]        NOT NULL,
-    [RefundDate]  [datetime2]        NULL
+    [OrderDate]   [datetimeoffset]        NOT NULL,
+    [ShippedDate] [datetimeoffset]        NOT NULL,
+    [RefundDate]  [datetimeoffset]        NULL
         CONSTRAINT [PK_Sales.Order] PRIMARY KEY CLUSTERED
             (
              [OrderId] ASC
