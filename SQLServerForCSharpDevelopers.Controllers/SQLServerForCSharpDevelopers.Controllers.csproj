@@ -15,4 +15,14 @@
     <ProjectReference Include="..\SQLServerForCSharpDevelopers.Contracts\SQLServerForCSharpDevelopers.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Sales\V1\Contact\" />
+    <Folder Include="Controllers\Sales\V1\Customer\" />
+    <Folder Include="Controllers\Sales\V1\Manager\" />
+    <Folder Include="Controllers\Sales\V1\OrderDetails\" />
+    <Folder Include="Controllers\Sales\V1\Order\" />
+    <Folder Include="Controllers\Sales\V1\Staff\" />
+    <Folder Include="Controllers\Sales\V1\Store\" />
+  </ItemGroup>
+
 </Project>
