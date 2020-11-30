@@ -7,8 +7,8 @@ namespace SQLServerForCSharpDevelopers.Contracts.Sales {
         public Staff Staff { get; set; }
         public Customer Customer { get; set; }
         public OrderStatus Status { get; set; }
-        public DateTime OrderDate { get; set; }
-        public DateTime ShippedDate { get; set; }
-        public DateTime RefundDate { get; set; }
+        public DateTimeOffset? OrderDate { get; set; }
+        public DateTimeOffset? ShippedDate { get; set; }
+        public DateTimeOffset? RefundDate { get; set; }
     }
 }

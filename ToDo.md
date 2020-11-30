@@ -7,7 +7,7 @@
 * [x] Create Basic Controllers
 * [] Setup azure pipeline
 * [] Setup SonarCloud
-* [] Change DateTime to DateTimeOffSet
+* [x] Change DateTime to DateTimeOffSet
 * [] Create Resources Project
   * [] Move Status Enum to Resources Project
   * [] Move SQL to Resources Project
@@ -25,3 +25,4 @@
 * [] Create Repo Models
 * [] Create Repo Layer
   * [] Repo Unit tests
+* [] Create Python Script to create data
