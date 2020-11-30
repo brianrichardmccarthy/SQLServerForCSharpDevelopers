@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using SQLServerForCSharpDevelopers.Contracts.Sales;
+using SQLServerForCSharpDevelopers.Resources.Models;
 
 namespace SQLServerForCSharpDevelopers.Contracts.Filters {
     public class OrderFilter {
