@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: 'src/*.sln'
+  solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -18,8 +18,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: 'src/*/.csproj'
-  displayName: 'Build'
+    projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
   inputs:
