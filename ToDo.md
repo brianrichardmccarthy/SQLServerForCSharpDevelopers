@@ -8,10 +8,10 @@
 * [] Setup azure pipeline
 * [] Setup SonarCloud
 * [x] Change DateTime to DateTimeOffSet
-* [] Create Resources Project
-  * [] Move Status Enum to Resources Project
-  * [] Move SQL to Resources Project
-  * [] Move SLN and Project files etc to src/ folder
+* [x] Create Resources Project
+  * [x] Move Status Enum to Resources Project
+  * [x] Move SQL to Resources Project
+  * [x] Move SLN and Project files etc to src/ folder
 * [] Configure FluentValidation, Medatr
 * [] Setup Tests Projects
   * [] Basic unit tests
