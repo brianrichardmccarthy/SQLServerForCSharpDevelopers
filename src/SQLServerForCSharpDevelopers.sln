@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLServerForCSharpDeveloper
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLServerForCSharpDevelopers.Tests", "SQLServerForCSharpDevelopers.Tests\SQLServerForCSharpDevelopers.Tests.csproj", "{8C375CDA-EAAA-43F2-A2F2-463A53354094}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLServerForCSharpDevelopers.Service", "SQLServerForCSharpDevelopers.Service\SQLServerForCSharpDevelopers.Service.csproj", "{ED7767EA-1A9E-4203-8E68-ABD92DAF4953}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLServerForCSharpDevelopers.Service", "SQLServerForCSharpDevelopers.Service\SQLServerForCSharpDevelopers.Service.csproj", "{ED7767EA-1A9E-4203-8E68-ABD92DAF4953}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLServerForCSharpDevelopers.Resources", "SQLServerForCSharpDevelopers.Resources\SQLServerForCSharpDevelopers.Resources.csproj", "{733D67D6-B835-4116-B4D9-92A50BBCA1FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{ED7767EA-1A9E-4203-8E68-ABD92DAF4953}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED7767EA-1A9E-4203-8E68-ABD92DAF4953}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED7767EA-1A9E-4203-8E68-ABD92DAF4953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{733D67D6-B835-4116-B4D9-92A50BBCA1FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{733D67D6-B835-4116-B4D9-92A50BBCA1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{733D67D6-B835-4116-B4D9-92A50BBCA1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{733D67D6-B835-4116-B4D9-92A50BBCA1FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
