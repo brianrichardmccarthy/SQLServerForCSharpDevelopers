@@ -4,20 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SQLServerForCSharpDevelopers.Controllers.Controllers.Sales.V1.Address {
-    public partial class AddressController {
+namespace SQLServerForCSharpDevelopers.Controllers.Controllers.Sales.V1.Customer {
+    public partial class CustomerController {
         [HttpPost("Create")]
-        public IActionResult CreateAddress() {
+        public IActionResult CreateCustomer() {
             return Ok();
         }
 
         [HttpPatch("Update")]
-        public IActionResult UpdateAddress() {
+        public IActionResult UpdateCustomer() {
             return Ok();
         }
 
         [HttpDelete("Delete")]
-        public IActionResult DeleteAddress() {
+        public IActionResult DeleteCustomer() {
             return Ok();
         }
     }

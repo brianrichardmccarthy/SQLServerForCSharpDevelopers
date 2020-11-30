@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SQLServerForCSharpDevelopers.Controllers.Controllers.Sales.V1.Address {
-    [Route("v1/Address")]
+namespace SQLServerForCSharpDevelopers.Controllers.Controllers.Sales.V1.Store {
+    [Route("v1/Store")]
     [ApiController]
-    public partial class AddressController : BaseController {
+    public partial class StoreController : BaseController {
     }
 }
