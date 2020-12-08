@@ -2,10 +2,10 @@ name: Build
 on:
   push:
     branches:
+      - master
+      - dev
       - feat/*
-      - feature/*
       - bugfix/*
-      - release/*
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -42,4 +42,5 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"brianrichardmccarthy_SQLServerForCSharpDevelopers" /o:"brianrichardmccarthy" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          Build Solution
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
