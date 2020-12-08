@@ -15,6 +15,11 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud'
@@ -28,11 +33,6 @@ steps:
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '900'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
   inputs:
