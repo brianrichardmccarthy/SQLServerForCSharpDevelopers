@@ -22,15 +22,15 @@ steps:
   steps:
   
   - task: PowerShell@2
-  displayName: 'Get Agent IP Address'
+    displayName: 'Get Agent IP Address'
   
   - task: GitVersion@5
-  displayName: 'Git Version'
-  inputs:
-    runtime: 'core'
-    updateAssemblyInfo: true
-    preferBundledVersion: false
-    configFilePath: '.azure/pipelines/GitVersion.yml'
+    displayName: 'Git Version'
+    inputs:
+      runtime: 'core'
+      updateAssemblyInfo: true
+      preferBundledVersion: false
+      configFilePath: '.azure/pipelines/GitVersion.yml'
   - task: UseDotNet@2
       displayName: 'Install .NET Core'
       inputs:
@@ -50,11 +50,11 @@ steps:
         sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/coverage.opencover.xml
         sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
   - task: DotNetCoreCLI@2
-  displayName: 'Restore Solution'
-  inputs:
-    command: 'restore'
-    projects: 'SQLServerForCSharpDevelopers.sln'
-    verbosityRestore: 'Normal'
+    displayName: 'Restore Solution'
+    inputs:
+      command: 'restore'
+      projects: 'SQLServerForCSharpDevelopers.sln'
+      verbosityRestore: 'Normal'
 
   - task: DotNetCoreCLI@2
     displayName: Build Solution
