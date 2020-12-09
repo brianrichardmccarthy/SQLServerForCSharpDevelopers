@@ -15,44 +15,64 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: DotNetCoreCLI@2
+- stage: BuildAll
+  jobs:
+  - job: BuildSQLServerForCSharpDevelopers
+  displayName: 'Build - SQLServerForCSharpDevelopers'
+  steps:
+  
+  - task: PowerShell@2
+  displayName: 'Get Agent IP Address'
+  
+  - task: GitVersion@5
+  displayName: 'Git Version'
   inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-
-- task: DotNetCoreCLI@2
+    runtime: 'core'
+    updateAssemblyInfo: true
+    preferBundledVersion: false
+    configFilePath: '.azure/pipelines/GitVersion.yml'
+  - task: UseDotNet@2
+      displayName: 'Install .NET Core'
+      inputs:
+        packageType: sdk
+        version: 5.0.1
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+  - task: SonarCloudPrepare@1
+    inputs:
+      SonarCloud: 'SonarCloud'
+      organization: 'brianrichardmccarthy'
+      scannerMode: 'MSBuild'
+      projectKey: 'SQLServerForCSharpDevelopersKey'
+      projectName: 'SQLServerForCSharpDevelopers'
+      extraProperties: |
+        sonar.exclusions=**/*.Tests/*
+        sonar.exclusions=**/lib/**,**/obj/**,**/*.dll
+        sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/coverage.opencover.xml
+        sonar.cs.vstest.reportsPaths=$(Agent.TempDirectory)/*.trx
+  - task: DotNetCoreCLI@2
+  displayName: 'Restore Solution'
   inputs:
     command: 'restore'
-    feedsToUse: 'select'
-    projects: '**/*.csproj'
-  displayName: 'Restore'
+    projects: 'SQLServerForCSharpDevelopers.sln'
+    verbosityRestore: 'Normal'
 
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'SonarCloud'
-    organization: 'brianrichardmccarthy'
-    scannerMode: 'MSBuild'
-    projectKey: 'SQLServerForCSharpDevelopersKey'
-    projectName: 'SQLServerForCSharpDevelopers'
-
-- task: SonarCloudAnalyze@1
-
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '900'
-
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    codeCoverageEnabled: true
-    
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '**/*.Tests.csproj'
-  displayName: 'Tests'
+  - task: DotNetCoreCLI@2
+    displayName: Build Solution
+    inputs:
+      command: 'build'
+      projects: 'SQLServerForCSharpDevelopers.sln'
+      arguments: '--configuration $(buildConfiguration) --no-restore'
+      verbosityRestore: 'Normal'
+  - task: DotNetCoreCLI@2
+      displayName: Run Tests
+      inputs:
+        command: 'test'
+        projects: '*.Tests/*.Tests.csproj'
+        arguments: '--configuration $(buildConfiguration) --no-restore /p:CollectCoverage=true "/p:CoverletOutputFormat=\"opencover,Cobertura\""'
+        verbosityRestore: 'Normal'
+        publishTestResults: true
+  - task: PublishCodeCoverageResults@1
+    displayName: Publish Cobertura Results
+    inputs:
+      codeCoverageTool: 'cobertura'
+      summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
