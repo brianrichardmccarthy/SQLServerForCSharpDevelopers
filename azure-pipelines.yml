@@ -20,6 +20,13 @@ steps:
     command: 'build'
     projects: '**/*.csproj'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    feedsToUse: 'select'
+    projects: '**/*.csproj'
+  displayName: 'Restore'
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud'
@@ -34,19 +41,6 @@ steps:
   inputs:
     pollingTimeoutSec: '900'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'restore'
-    feedsToUse: 'select'
-    projects: '**/*.csproj'
-  displayName: 'Restore'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '**/*.Tests.csproj'
-  displayName: 'Tests'
-
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
@@ -56,3 +50,9 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     codeCoverageEnabled: true
+    
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*.Tests.csproj'
+  displayName: 'Tests'
